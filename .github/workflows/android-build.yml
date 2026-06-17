@@ -14,13 +14,19 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 18 # Using a super stable version for NativeScript
+        node-version: 18
+
+    # 🛠️ THIS IS THE NEW MAGIC STEP THAT FIXES ERROR 127!
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        cmdline-tools-version: 11076708 # Installs the exact missing tools
 
     - name: Install Mobile Build Tools
       run: npm install -g nativescript
 
     - name: Install Project Dependencies
-      run: npm install --legacy-peer-deps # This stops the installer from failing!
+      run: npm install --legacy-peer-deps
 
     - name: Build Android APK
       run: ns build android --release --copy-to build.apk
