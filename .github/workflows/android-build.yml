@@ -29,7 +29,7 @@ jobs:
       run: npm install --legacy-peer-deps
 
     - name: Build Android APK
-      run: ns build android --release --copy-to build.apk
+      run: ns build android --debug --copy-to build.apk
 
     - name: Upload Finished App
       uses: actions/upload-artifact@v4
