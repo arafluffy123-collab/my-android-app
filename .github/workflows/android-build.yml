@@ -1,0 +1,32 @@
+name: Build Android App
+on:
+  push:
+    branches: [ main ] # Runs every time you push code to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Uses a free cloud Linux computer to build your app
+    
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install Mobile Build Tools
+      run: npm install -g nativescript
+
+    - name: Install Project Dependencies
+      run: npm install
+
+    - name: Build Android APK
+      run: ns build android --release --copy-to build.apk
+
+    - name: Upload Finished App
+      uses: actions/upload-artifact@v4
+      with:
+        name: my-android-app
+        path: build.apk # This gives you a free download link for your APK!
