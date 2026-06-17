@@ -1,0 +1,12 @@
+{
+  "name": "my-javascript-app",
+  "main": "app.js",
+  "version": "1.0.0",
+  "dependencies": {
+    "@nativescript/core": "latest"
+  },
+  "devDependencies": {
+    "@nativescript/android": "latest",
+    "@nativescript/webpack": "latest"
+  }
+}
